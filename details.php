@@ -1,8 +1,14 @@
 <?php
     include("./includes/Users.php");
+
+    if(isset($_GET['id'])){
+        $getid = $_GET['id'];
+    }else{
+        $getid = "";
+    }
     
     $user = new User();
-    $allUsers = $user->getall();
+    $users = $user->get($getid);
     
 ?>
 <!DOCTYPE html>
@@ -14,17 +20,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List of all users;</h1>
+    <h1>User</h1>
 
     <div class="container">
         <ul>
             <?php
-                foreach($allUsers as $key => $user){
-                    echo "<li><a href='details.php?id=".$user['id']."'>" .$user['fname']."</a></li>";
-                    echo "<li>" .$user['lname']."</a></li>";
-                    echo "<li>" .$user['email']."</a></li>";
-                    echo "<hr>";
-                }
+                echo "<li>First Name: " .$users['fname']."</li>";
+                echo "<li>Last Name: " .$users['lname']."</li>";
+                echo "<li>Email Address: " .$users['email']."</li>";   
             ?>
         </ul>
     </div>
