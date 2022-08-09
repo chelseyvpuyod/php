@@ -10,10 +10,9 @@ class User extends Db{
         if($row > 0){
             while($row = $result->fetch_assoc()){
                 $data[] = $row;
-
             }
         }else{
-            return "No data found.";
+            return 0;
         }
         return $data;
     }
@@ -26,7 +25,7 @@ class User extends Db{
         if($row > 0){
             $data = $result->fetch_assoc();
         }else{
-            return "No data found.";
+            return 0;
         }
         return $data;
     }

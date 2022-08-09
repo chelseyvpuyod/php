@@ -9,6 +9,7 @@
     
     $user = new User();
     $users = $user->get($getid);
+
     
 ?>
 <!DOCTYPE html>
@@ -25,9 +26,13 @@
     <div class="container">
         <ul>
             <?php
+            if($users){
                 echo "<li>First Name: " .$users['fname']."</li>";
                 echo "<li>Last Name: " .$users['lname']."</li>";
                 echo "<li>Email Address: " .$users['email']."</li>";   
+            }else{
+                echo "<li>No data found.</li>"; 
+            }
             ?>
         </ul>
     </div>

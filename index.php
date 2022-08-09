@@ -20,9 +20,7 @@
         <ul>
             <?php
                 foreach($allUsers as $key => $user){
-                    echo "<li><a href='details.php?id=".$user['id']."'>" .$user['fname']."</a></li>";
-                    echo "<li>" .$user['lname']."</a></li>";
-                    echo "<li>" .$user['email']."</a></li>";
+                    echo "<li>First Name: <a href='details.php?id=".$user['id']."'>" .$user['fname']."</a></li>";
                     echo "<hr>";
                 }
             ?>
