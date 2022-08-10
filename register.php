@@ -1,19 +1,6 @@
 <?php
     include("./includes/Users.php");
     $user = new User();
-
-    if(isset($_POST['submit'])){
-        if(!empty($_POST['fname']) && $_POST['lname'] && $_POST['email']){
-            if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                $user->add();
-            }else{
-                echo "Email format is not accepted.";
-            }  
-        }else{
-            echo "Input not be empty";
-        }
-    }
-    
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +16,19 @@
     <div class="container">
         <div class="register">
         <h1>Register Form</h1>
+            <?php
+                if(isset($_POST['submit'])){
+                    if(!empty($_POST['fname']) && $_POST['lname'] && $_POST['email']){
+                        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                            $user->add();
+                        }else{
+                            echo "<p>Email format is not accepted.</p>";
+                        }  
+                    }else{
+                        echo "<p>Input not be empty.</p>";
+                    }
+                }
+            ?>
             <form action="register.php" method="POST" enctype="multipart/form-data">
                 <label for="fname">First Name: </label>
                 <input type="text" name="fname">
