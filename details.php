@@ -6,9 +6,16 @@
     }else{
         $getid = "";
     }
-    
+
     $user = new User();
     $users = $user->get($getid);
+
+    if(isset($_GET['delete'])){
+       echo $user->delete($_GET['delete']);
+    }
+
+    
+    
 
     
 ?>
@@ -18,24 +25,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function deleteitem(id){
+            var con = confirm("Are you sure you want to delete this item?");
+            if(con){
+                return id;
+            }
+        }
+    </script>
+
+
     <title>Document</title>
 </head>
 <body>
-    <h1>User</h1>
+    
 
     <div class="container">
-        <ul>
-            <?php
-            if($users){
-                echo "<li>First Name: " .$users['fname']."</li>";
-                echo "<li>Last Name: " .$users['lname']."</li>";
-                echo "<li>Email Address: " .$users['email']."</li>";   
-            }else{
-                echo "<li>No data found.</li>"; 
-            }
-            ?>
-        </ul>
+        <div class="details">
+        <h1>User</h1>
+            <ul>
+                <?php
+                if($users){
+                    echo "<li>First Name: " .$users['fname']."</li>";
+                    echo "<li>Last Name: " .$users['lname']."</li>";
+                    echo "<li>Email Address: " .$users['email']."</li>";   
+                }else{
+                    echo "<li>No data found.</li>"; 
+                }
+                ?>
+            </ul>
+            <button onClick="document.location='edit.php?id=<?php echo $getid; ?>'" class="update left">Update</button>&nbsp;
+            <button onClick="deleteitem(document.location='details.php?id=<?php echo $getid; ?>&delete=<?php echo $getid; ?>')" class="delete">Delete</button>
+            <button onClick="document.location='index.php'" class="list right">Back</button>
+        </div>
     </div>
 
 </body>
+
 </html>

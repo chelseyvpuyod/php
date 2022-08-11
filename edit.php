@@ -1,10 +1,10 @@
 <?php
     include("./includes/Users.php");
-    
     $user = new User();
-    $allUsers = $user->getall();
-    
+    $id = $_GET['id'];
+    $users = $user->get($id);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,44 +15,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List of all users:</h1>
-
     <div class="container">
-        <ul>
-            <?php
-                foreach($allUsers as $key => $alluser){
-                    echo "<li>Name: <a href='details.php?id=".$alluser['id']."'>" .$alluser['fname']."</a></li>";
-                    echo "<hr>";
-                }
-            ?>
-        </ul>
-    </div>
-
-    <div class="addnewusers">
-        <h1>Add Users</h1>
+        <div class="register">
+        <h1>Edit</h1>
             <?php
                 if(isset($_POST['submit'])){
                     if(!empty($_POST['fname']) && $_POST['lname'] && $_POST['email']){
                         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
-                            $user->add();
+                            $user->update($id);
                         }else{
-                            echo "<p class='red'>Email format is not accepted.</p>";
+                            echo "<p>Email format is not accepted.</p>";
                         }  
                     }else{
-                        echo "<p class='red'>Input not be empty.</p>";
+                        echo "<p>Input not be empty.</p>";
                     }
                 }
             ?>
-            <form action="index.php" method="POST" enctype="multipart/form-data">
+            <form action="edit.php?id=<?php echo $id;?>" method="POST" enctype="multipart/form-data">
                 <label for="fname">First Name: </label>
-                <input type="text" name="fname">
+                <input value="<?php echo $users['fname']?>" type="text" name="fname">
                 <label for="fname">Last Name: </label>
-                <input type="text" name="lname">
+                <input value="<?php echo $users['lname']?>" type="text" name="lname">
                 <label for="fname">Email Address: </label>
-                <input type="text" name="email">
-                <button type="submit" name="submit">Add</button>
+                <input value="<?php echo $users['email']?>" type="text" name="email">
+                <button type="submit" name="submit">Update</button>
             </form>
         </div>
-
+    </div>
 </body>
 </html>

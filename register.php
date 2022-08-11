@@ -22,10 +22,10 @@
                         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                             $user->add();
                         }else{
-                            echo "<p>Email format is not accepted.</p>";
+                            echo "<p class='red'>Email format is not accepted.</p>";
                         }  
                     }else{
-                        echo "<p>Input not be empty.</p>";
+                        echo "<p class='red'>Input not be empty.</p>";
                     }
                 }
             ?>

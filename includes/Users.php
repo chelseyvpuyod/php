@@ -43,6 +43,29 @@ class User extends Db{
         }
     }
 
+    public function delete($id){
+        $sql = "DELETE FROM users WHERE id=".$id;
+        $result = $this->connect()->query($sql);
+        if($result){
+            header("Location:index.php");
+        }else{
+            echo "Item not found.";
+        }
+    }
+
+    public function update($id){
+        $this->fname = $_POST['fname'];
+        $this->lname = $_POST['lname'];
+        $this->email = $_POST['email'];
+        $sql = "UPDATE users SET fname='$this->fname',lname='$this->lname',email='$this->email' WHERE id=".$id;
+        $result = $this->connect()->query($sql);
+        if($result){
+            header("Location:details.php?id=$id");
+        }else{
+            echo "Item not found.";
+        }
+    }
+
 
 }
 ?>

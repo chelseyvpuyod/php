@@ -3,13 +3,33 @@
     min-height: 100px;
     margin: 0 auto;
 }
+.details{
+    width:25%;
+    min-height: 100px;
+    margin: 0 auto;
+}
 label, input{
     width:100%;
     width: 98%;
     margin: 3px 0;
 }
 button{
-    margin-top:5px
+    margin-top:5px;
+}
+.right {
+    float: right;
+}
+.left{
+    float: left;
+}
+ul{
+    padding:0;
+}
+ul li{
+    list-style: none;
+}
+.red{
+    color:red;
 }
 
 /* Extra small devices (phones, 600px and down) */
