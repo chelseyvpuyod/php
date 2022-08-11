@@ -1,4 +1,8 @@
-.register{
+.wrapper{
+    margin: 0 auto;
+    width: 600px;
+}
+/* .register{
     width:25%;
     min-height: 100px;
     margin: 0 auto;
@@ -7,7 +11,7 @@
     width:25%;
     min-height: 100px;
     margin: 0 auto;
-}
+} */
 label, input{
     width:100%;
     width: 98%;
@@ -31,6 +35,9 @@ ul li{
 .red{
     color:red;
 }
+.upbutton{
+    margin-top:-22px
+}
 
 /* Extra small devices (phones, 600px and down) */
 /*@media only screen and (max-width: 600px) {...}*/
@@ -40,6 +47,9 @@ ul li{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+    }
     .register{
         width:100%;
         padding: 0px;
@@ -47,6 +57,7 @@ ul li{
     label, input{
         width: 98%;
     }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

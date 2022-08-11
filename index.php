@@ -15,9 +15,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>List of all users:</h1>
-
+    <div class="wrapper">
     <div class="container">
+    <h1>List of all users:</h1>
         <ul>
             <?php
                 foreach($allUsers as $key => $alluser){
@@ -53,6 +53,6 @@
                 <button type="submit" name="submit">Add</button>
             </form>
         </div>
-
+</div>
 </body>
 </html>

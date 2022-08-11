@@ -13,6 +13,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="wrapper">
     <div class="container">
         <div class="register">
         <h1>Register Form</h1>
@@ -39,6 +40,7 @@
                 <button type="submit" name="submit">Register</button>
             </form>
         </div>
+    </div>
     </div>
 </body>
 </html>

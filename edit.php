@@ -15,6 +15,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="wrapper">
     <div class="container">
         <div class="register">
         <h1>Edit</h1>
@@ -38,9 +39,11 @@
                 <input value="<?php echo $users['lname']?>" type="text" name="lname">
                 <label for="fname">Email Address: </label>
                 <input value="<?php echo $users['email']?>" type="text" name="email">
-                <button type="submit" name="submit">Update</button>
+                <button type="submit" name="submit">Update</button> 
             </form>
+            <button onClick="document.location='details.php?id=<?php echo $id;?>'" class="list upbutton right">Back</button>
         </div>
+    </div>
     </div>
 </body>
 </html>

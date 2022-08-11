@@ -30,7 +30,9 @@
         function deleteitem(id){
             var con = confirm("Are you sure you want to delete this item?");
             if(con){
-                return id;
+                document.location="details.php?id="+id+"&delete="+id+"";
+            }else{
+                document.location="details.php?id="+id+"";
             }
         }
     </script>
@@ -40,7 +42,7 @@
 </head>
 <body>
     
-
+    <div class="wrapper">
     <div class="container">
         <div class="details">
         <h1>User</h1>
@@ -56,9 +58,10 @@
                 ?>
             </ul>
             <button onClick="document.location='edit.php?id=<?php echo $getid; ?>'" class="update left">Update</button>&nbsp;
-            <button onClick="deleteitem(document.location='details.php?id=<?php echo $getid; ?>&delete=<?php echo $getid; ?>')" class="delete">Delete</button>
+            <button onClick="deleteitem(<?php echo $getid; ?>)" class="delete">Delete</button>
             <button onClick="document.location='index.php'" class="list right">Back</button>
         </div>
+    </div>
     </div>
 
 </body>
