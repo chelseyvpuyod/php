@@ -38,9 +38,18 @@ ul li{
 .upbutton{
     margin-top:-22px
 }
+.pagelinks{
+    padding: 10px 0;
+}
 .footer{
     text-align: center;
     padding: 20px 0;
+}
+.clearB{
+    clear:both;
+}
+.pagelinks a{
+    text-decoration: none;
 }
 
 /* Extra small devices (phones, 600px and down) */

@@ -4,11 +4,10 @@ class Db {
     private $user;
     private $pass;
     private $dbname; 
-
     private $fname;
     private $lname;
     private $email;
-
+    
     public function connect(){
         $this->servername = "localhost";
         $this->user = "root";

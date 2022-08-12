@@ -30,16 +30,14 @@
             ?>
             
         </div>
-        <ul>
+        <div class="listing">
             <?php
-                foreach($allUsers as $key => $alluser){
-                    echo "<li>Name: <a href='details.php?id=".$alluser['id']."'>" .$alluser['fname']."</a></li>";
-                    echo "<hr>";
-                }
+                $user->pagination();
+                
             ?>
-        </ul>
+        </div>
     </div>
-
+    <div class="clearB"></div>
     <div class="addnewusers">
         <h1>Add Users</h1>
         
