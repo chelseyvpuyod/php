@@ -36,7 +36,7 @@ class User extends Db{
         $sql = "INSERT INTO users(fname, lname, email) VALUES ('$this->fname','$this->lname','$this->email')";
         $result = $this->connect()->query($sql);
         if($result){
-            header("Location:index.php");
+            header("Location:index.php?saved=true");
         }else{
             echo "Items not found";
             die();
@@ -47,7 +47,7 @@ class User extends Db{
         $sql = "DELETE FROM users WHERE id=".$id;
         $result = $this->connect()->query($sql);
         if($result){
-            header("Location:index.php");
+            header("Location:index.php?deleted=successfully");
         }else{
             echo "Item not found.";
         }
@@ -66,6 +66,19 @@ class User extends Db{
         }
     }
 
+    public function userExist($email){
+        $sql = "SELECT id FROM users WHERE email = '".$email."'";
+        $result = $this->connect()->query($sql);
+        $row = $result->num_rows;
+        if($row > 0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
+    public function fillData(){
+        return $_POST;
+    }
 }
 ?>
