@@ -45,7 +45,7 @@
     <div class="wrapper">
     <div class="container">
         <div class="details">
-        <h1>User</h1>
+        <h1>Account</h1>
             <ul>
                 <?php
                 if($users){

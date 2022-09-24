@@ -7,6 +7,7 @@ class Db {
     private $fname;
     private $lname;
     private $email;
+    private $lastid;
     
     public function connect(){
         $this->servername = "localhost";

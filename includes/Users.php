@@ -35,12 +35,16 @@ class User extends Db{
         $this->email = $_POST['email'];
         $sql = "INSERT INTO users(fname, lname, email) VALUES ('$this->fname','$this->lname','$this->email')";
         $result = $this->connect()->query($sql);
+        print_r($this->connect()->insert_id);
+        die();
+
         if($result){
-            header("Location:index.php?saved=true");
+            return true; 
         }else{
             echo "Items not found";
-            die();
+           
         }
+        
     }
 
     public function delete($id){
@@ -88,7 +92,7 @@ class User extends Db{
         $r = $result->fetch_row();
         $numrows = $r[0];
 
-        $rowsperpage = 3;
+        $rowsperpage = 5;
         // find out total pages
         $totalpages = ceil($numrows / $rowsperpage);
 
@@ -117,14 +121,12 @@ class User extends Db{
 
         // get the info from the db 
         $sql = "SELECT id, fname FROM users ORDER BY id DESC LIMIT $offset, $rowsperpage";
-  
         $result = $this->connect()->query($sql);
 
         // while there are rows to be fetched...
         while ($list = $result->fetch_assoc()) {
         // echo data
         echo "<ul>";
-            //echo $list['id'] . " : ".$list['fname']."<br />";
             echo "<li>Name: <a href='details.php?id=".$list['id']."'>" .$list['fname']."</a></li>";
             echo "<hr>";
         echo "</ul>";
@@ -176,6 +178,40 @@ class User extends Db{
         } // end if
         /****** end build pagination links ******/
         echo "</div>";
+    }
+
+    // Upload image;
+    public function upload(){
+        $file = $_FILES['file'];
+        $fileName = $file['name'];
+        $fileNameExplode = explode('.', $fileName);
+        $fileExtension = strtolower(end($fileNameExplode));
+        $fileallowed = array('jpg','jpeg','png');
+
+        $fileType = $file['type'];
+        $fileTmp_name = $file['tmp_name'];
+        $fileError = $file['error'];
+        $fileSize = $file['size'];
+        if($file){
+            if(in_array($fileExtension, $fileallowed)){
+                if($fileError === 0){
+                    if($fileSize < 10000000){
+                        $fileActual = uniqid('',true).".".$fileExtension;
+                        $fileNameDestination = "uploads/".$fileActual;
+                        move_uploaded_file($fileTmp_name,$fileNameDestination);
+                        header("Location:index.php?saved=true");
+                        
+                    }else{
+                        echo "file size is too big";
+                    }
+                }else{
+                    echo "Error found";
+                }
+            }else{
+                echo "This file is not allowed";
+            }
+        }
+
     }
 }
 ?>

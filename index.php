@@ -4,6 +4,7 @@
     $user = new User();
     $allUsers = $user->getall();
     
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@
     </div>
     <div class="clearB"></div>
     <div class="addnewusers">
-        <h1>Add Users</h1>
+        <h1>Add Account</h1>
         
             <?php
                 $gfname = "";
@@ -63,10 +64,11 @@
                         if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
                             $userExist = $user->userExist($_POST['email']);
                             if($userExist){
-
                                 echo "<p class='red'>Email is already in used.</p>";
                             }else{
-                                $user->add(); 
+                                    $user->add();
+                                    $user->upload(); 
+                                
                             }
                             
                         }else{
@@ -75,21 +77,19 @@
                     }else{
                         echo "<p class='red'>Input not be empty.</p>";
                     }
-                    // Validate if errors found
+                    
 
                 }
             ?>
             <form action="<?php echo $action;?>" method="POST" enctype="multipart/form-data">
-            <?php
-            
-            
-            ?>
                 <label for="fname">First Name: </label>
                 <input type="text" value="<?php echo $gfname;?>" name="fname">
                 <label for="fname">Last Name: </label>
                 <input type="text" value="<?php echo $glname;?>" name="lname">
                 <label for="fname">Email Address: </label>
                 <input type="text" value="<?php echo $gemail;?>" name="email">
+                <label for="upload">Upload image</label>
+                <input type="file" name="file">
                 <button type="submit" name="submit">Add</button>
             </form>
         </div>
